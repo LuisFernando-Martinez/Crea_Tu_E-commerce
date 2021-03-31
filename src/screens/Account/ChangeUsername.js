@@ -1,88 +1,85 @@
-import React, {useState, useCallback} from 'react';
+import React, { useState, useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
-import {TextInput, Button} from "react-native-paper";
-import {useFocusEffect, useNavigation} from "@react-navigation/native";
+import { TextInput, Button } from "react-native-paper";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import Toast from "react-native-root-toast";
-import {getMeApi, updateUserApi} from "../../api/user";
 import useAuth from "../../hooks/useAuth";
+import { getMeApi, updateUserApi } from "../../api/user";
 import {formStyle} from "../../styles";
 
-export default function ChangeEmail() {
+export default function ChangeUsername() {
     const {auth} = useAuth();
     const [loading, setLoading] = useState(false);
     const navigation = useNavigation();
-
+    
     useFocusEffect(
         useCallback(() => {
             (async() => {
                 const response = await getMeApi(auth.token);
-                await formik.setFieldValue("email", response.email);
-            }) ()
-        }, [])
+                await formik.setFieldValue("username", response.username);
+            })();
+        }, [] )
     );
 
     const formik = useFormik({
-        initialValues: initialValues(),
+        initialValues: (initialValues()),
         validationSchema: Yup.object(validationSchema()),
         onSubmit: async (formData) => {
             setLoading(true);
             try {
                 const response = await updateUserApi(auth, formData);
-<<<<<<< HEAD
-                if(response.statusCode) throw "El email ya existe"
-=======
-                if(response.statusCode) throw "El email ya existe";
->>>>>>> 03c5c9032fe075b08107e97423da02bf36ecf04b
-                Toast.show("Correo Actualizado", {
+                if(response.statusCode) throw "El nombre del usuario ya existe";
+                Toast.show("Username Actualizado Correctamente", {
                     position: Toast.positions.CENTER
-                });
+                })
                 navigation.goBack();
             } catch (error) {
                 Toast.show(error, {
                     position: Toast.positions.CENTER
-                });
-                console.log("ERROR: ==>"+error);
-                formik.setFieldError("email", true);
+                })
+                formik.setFieldError("username", true);
                 setLoading(false);
             }
+            
         }
-    })
+    });
+    
 
     return (
-        <View style={styles.container}>
+        <View style={styles.content}>
             <TextInput
-                label="Email"
+                label="Nombre de usuario"
                 style={formStyle.input}
-                onChangeText={(text) => formik.setFieldValue("email", text)}
-                value = {formik.values.email}
-                error={formik.errors.email}/>
-            <Button
+                onChangeText={(text) => formik.setFieldValue("username", text)}
+                value={formik.values.username}
+                error = {formik.errors.username}/>
+            <Button 
                 mode="contained"
                 style={formStyle.btnSuccess}
                 onPress={formik.handleSubmit}
                 loading={loading}>
-                    Cambiar Email
-                </Button>
+                Cambiar nombre de usuario
+            </Button>
         </View>
     )
 }
 
 function initialValues(){
-    return {
-        email: ""
+    return{
+        username: ""
     }
 }
 
 function validationSchema(){
     return{
-        email: Yup.string().email(true).required(true)
+        username: Yup.string().min(4, true).required(true)
     }
 }
 
 const styles = StyleSheet.create({
-    container:{
-        padding: 20
+    content:{
+        padding:20
     }
 })
