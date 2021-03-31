@@ -30,11 +30,7 @@ export default function ChangeEmail() {
             setLoading(true);
             try {
                 const response = await updateUserApi(auth, formData);
-<<<<<<< HEAD
-                if(response.statusCode) throw "El email ya existe"
-=======
                 if(response.statusCode) throw "El email ya existe";
->>>>>>> 03c5c9032fe075b08107e97423da02bf36ecf04b
                 Toast.show("Correo Actualizado", {
                     position: Toast.positions.CENTER
                 });
