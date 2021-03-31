@@ -3,6 +3,9 @@ import { createStackNavigator} from "@react-navigation/stack";
 import Account from "../screens/Account/Account";
 import ChangeName from "../screens/Account/ChangeName";
 import ChangeEmail from "../screens/Account/ChangeEmail";
+import ChangeUsername from "../screens/Account/ChangeUsername";
+import ChangePassword from "../screens/Account/ChangePassword";
+import Addresses from "../screens/Account/Adrdresses";
 import colors from '../styles/colors';
 
 const Stack = createStackNavigator();
@@ -36,6 +39,27 @@ export default function AccountStack() {
                 component={ChangeEmail}
                 option={{
                     title: "Cambiar email"
+                }}/>
+
+            <Stack.Screen
+                name="change-username"
+                component={ChangeUsername}
+                options={{
+                    title: "Cambiar username"
+                }}/>
+
+            <Stack.Screen
+                name="change-password"
+                component={ChangePassword}
+                options={{
+                    title: "Cambiar contraseña"
+                }}/>
+
+            <Stack.Screen 
+                name="addresses"
+                component={Addresses}
+                options={{
+                    title: "Mis direcciones"
                 }}/>
         </Stack.Navigator>
     )
