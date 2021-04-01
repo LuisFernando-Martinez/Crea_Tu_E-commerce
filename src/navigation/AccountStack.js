@@ -5,7 +5,7 @@ import ChangeName from "../screens/Account/ChangeName";
 import ChangeEmail from "../screens/Account/ChangeEmail";
 import ChangeUsername from "../screens/Account/ChangeUsername";
 import ChangePassword from "../screens/Account/ChangePassword";
-import Addresses from "../screens/Account/Adrdresses";
+import Addresses from "../screens/Account/Addresses";
 import colors from '../styles/colors';
 
 const Stack = createStackNavigator();

@@ -11,13 +11,12 @@ export default function Addresses() {
     const {auth} = useAuth();
 
     useFocusEffect(
-        useCallback(
-            () => {
-                (async () =>{
-                    const response = await getAddressesApi(auth);
-                    setAddresses(response);
-                })()
-            }, [])
+        useCallback(() => {
+            (async () =>{
+                const response = await getAddressesApi(auth);
+                setAddresses(response);
+            })();
+        }, [])
     );
 
     return (
@@ -33,6 +32,7 @@ export default function Addresses() {
                         size={19}/>
                 </View>
             </TouchableWithoutFeedback>
+            
             {!addresses ? (
                 <ActivityIndicator size="large" style={styles.loading} />
             ) : size(addresses) === 0 ? (
