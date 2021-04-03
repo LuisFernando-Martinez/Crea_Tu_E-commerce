@@ -1,29 +1,33 @@
 import React, { useState, useCallback } from 'react';
 import { StyleSheet, View, ScrollView, Text, TouchableWithoutFeedback, ActivityIndicator } from 'react-native';
 import { IconButton } from "react-native-paper";
-import { useFocusEffect} from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { size } from "lodash";
+import AddressList from "../../components/Address/AddressList";
 import { getAddressesApi } from "../../api/address";
 import useAuth from "../../hooks/useAuth";
 
 export default function Addresses() {
     const [addresses, setAddresses] = useState(null);
+    const [reloadAddress, setReloadAddress] = useState(false);
     const {auth} = useAuth();
+    const navigation = useNavigation();
 
     useFocusEffect(
         useCallback(() => {
+            setAddresses(false);
             (async () =>{
                 const response = await getAddressesApi(auth);
                 setAddresses(response);
             })();
-        }, [])
+        }, [reloadAddress])
     );
 
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.title}>Mis direcciones</Text>
             <TouchableWithoutFeedback
-                onPress={() => console.log("Creando Nueva Direccion")}>
+                onPress={() => navigation.navigate("add-address")}>
                 <View style={styles.addAddress}>
                     <Text style={styles.addAddressText}>Añadir una dirección</Text>
                     <IconButton 
@@ -38,7 +42,7 @@ export default function Addresses() {
             ) : size(addresses) === 0 ? (
                 <Text style={styles.noAddressText}>Crea tu primera dirección</Text>
             ) : (
-                <Text>Listado de direcciones</Text>
+                <AddressList addresses={addresses} setReloadAddress={setReloadAddress}/> 
             )}
         </ScrollView>
     );
