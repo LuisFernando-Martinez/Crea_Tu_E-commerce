@@ -3,6 +3,7 @@ import { ScrollView } from 'react-native';
 import StatusBar from "../../components/StatusBar";
 import Search from "../../components/Search";
 import NewProducts from "../../components/Home/NewProducts";
+import Banners from "../../components/Home/Banners";
 import colors from "../../styles/colors";
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
             <StatusBar backgroundColor={colors.bgDark} barStyle="light-content"/>
             <Search />
             <ScrollView>
-                {/*Banner*/}
+                <Banners/>
                 <NewProducts/>
             </ScrollView>
         </>
