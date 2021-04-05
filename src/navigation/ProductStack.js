@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Product/Home";
 import Product from "../screens/Product/Product";
+import Search from "../screens/Product/Search";
 import colors from "../styles/colors";
 
 export default function ProductStack() {
@@ -25,6 +26,11 @@ export default function ProductStack() {
                 name="product"
                 component={Product}
                 options={{headerShown: false}}/>
+            
+            <Stack.Screen 
+                name="search"
+                component={Search}
+                option={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }
