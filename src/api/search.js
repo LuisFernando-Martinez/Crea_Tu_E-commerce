@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { size} from "lodash";
-import { SEARCH_HISTORY } from "../utils/constants";
+import { SEARCH_HISTORY, API_URL } from "../utils/constants";
 import { sortArrayByDate } from "../utils/functions";
 
 export async function getSearchHistoryApi(){
@@ -26,3 +26,15 @@ export async function updateSearchHistoryApi(search){
     });
     await AsyncStorage.setItem(SEARCH_HISTORY, JSON.stringify(history));
 }
+
+export async function searchProductsApi(search){
+    try {
+        const url = `${API_URL}/products?_q=${search}&_limit=10`;
+        const response = await fetch(url);
+        const result = await response.json();
+        return result
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+} 
