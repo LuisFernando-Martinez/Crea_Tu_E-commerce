@@ -4,6 +4,7 @@ import AwesomeIcon from "react-native-vector-icons/FontAwesome";
 import { map } from "lodash";
 import { getSearchHistoryApi } from "../../api/search";
 import colors from "../../styles/colors";
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function SearchHistory(props) {
     const {showHistory, countainerHeight, onSearch } = props;
@@ -22,14 +23,14 @@ export default function SearchHistory(props) {
     return (
         <View style={[showHistory ? styles.history : styles.hidden, {top:countainerHeight}]}>
             {history && map(history, (item, index) => (
-                <TouchableWithoutFeedback
+                <TouchableOpacity
                     key={index}
                     onPress={() => onSearch(item.search)}>
                     <View style={styles.historyItem}>
                         <Text style={styles.text}>{item.search}</Text>
                         <AwesomeIcon name="arrow-right" size={16}/>
                     </View>
-                </TouchableWithoutFeedback>
+                </TouchableOpacity>
             ))}
         </View>
     );
