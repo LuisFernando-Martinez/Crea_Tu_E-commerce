@@ -6,43 +6,42 @@ export default function Quantity(props) {
     const {quantity, setQuantity} = props;
     return (
         <View style={{zIndex: 2}}>
-            <DropDownPicker 
+            <DropDownPicker
                 items={[
                     {
                         label: "1",
-                        value: 1
+                        value: 1,
                     },
                     {
                         label: "2",
-                        value: 2
+                        value: 2,
                     },
                     {
                         label: "3",
-                        value: 3
-                    }
+                        value: 3,
+                    },
                 ]}
                 defaultValue= {quantity}
                 containerStyle={styles.containerStyle}
                 itemStyle= {styles.itemStyle}
                 dropDownStyle={styles.dropDownPicker}
-                style={styles.drowpDownPicker}
+                style={styles.dropDownPicker}
                 labelStyle={styles.labelStyle}
-                onChangeItem={(item) => setQuantity(item.value)}
+                onChangeItem={(items) => setQuantity(items.value)}
             />
         </View>
-        
     );
 }
 
 const styles = StyleSheet.create({
     containerStyle: {
-        height: 40,
+        height:40,
         width: 100
     },
     itemStyle: {
         justifyContent:"flex-start"
     },
-    drowpDownPicker: {
+    dropDownPicker: {
         backgroundColor: "#fafafa"
     },
     labelStyle: {

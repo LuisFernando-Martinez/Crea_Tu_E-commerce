@@ -7,16 +7,16 @@ import { addProductCartApi } from "../../api/cart";
 export default function Buy(props) {
     const { product, quantity } = props;
 
-    const addProductCart = async () => {
+        const addProductCart = async () => {
         const response = await addProductCartApi(product._id, quantity);
+
         if(response){
             Toast.show("Producto añadido al carrito", {
-                position: Toast.positions.BOTTOM
-            });
-            console.log("Producto añadido al carrito");
-        }else{
-            Toast.show("Error al añadir el producto al carrito", {
                 position: Toast.positions.CENTER
+            });
+        }else{
+            Toast.show("Error al añadir el producto al carrito",{
+            position: Toast.positions.CENTER
             });
         }
     };
