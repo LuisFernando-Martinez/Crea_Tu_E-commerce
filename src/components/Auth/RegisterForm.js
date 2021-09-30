@@ -21,7 +21,7 @@ export default function RegisterForm(props) {
             } catch (error) {
                 setLoading(false);
                 Toast.show("Error al registar usuario", {
-                    position: Toast.positions.CENTER
+                    position: Toast.positions.CENTER,
                 });
             }
         }

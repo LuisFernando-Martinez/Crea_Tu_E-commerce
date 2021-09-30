@@ -34,6 +34,8 @@
     "react-native-snap-carousel": "^3.9.1",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "^0.17.1",
+    "stripe-cli": "^0.1.0",
+    "stripe-client": "^1.1.5",
     "xdl": "^59.2.0",
     "yarn": "^1.22.11",
     "yup": "^0.32.9"

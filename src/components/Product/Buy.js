@@ -12,11 +12,11 @@ export default function Buy(props) {
 
         if(response){
             Toast.show("Producto añadido al carrito", {
-                position: Toast.positions.CENTER
+                position: Toast.positions.CENTER,
             });
         }else{
             Toast.show("Error al añadir el producto al carrito",{
-            position: Toast.positions.CENTER
+            position: Toast.positions.CENTER,
             });
         }
     };

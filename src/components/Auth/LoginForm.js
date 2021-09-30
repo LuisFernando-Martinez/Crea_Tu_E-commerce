@@ -27,7 +27,7 @@ export default function LoginForm(props) {
                 login(response);
             } catch (error) {
                 Toast.show(error, {
-                    position: Toast.positions.CENTER
+                    position: Toast.positions.CENTER,
                 });
                 setLoading(false);
             }

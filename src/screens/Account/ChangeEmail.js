@@ -32,12 +32,12 @@ export default function ChangeEmail() {
                 const response = await updateUserApi(auth, formData);
                 if(response.statusCode) throw "El email ya existe";
                 Toast.show("Correo Actualizado", {
-                    position: Toast.positions.CENTER
+                    position: Toast.positions.CENTER,
                 });
                 navigation.goBack();
             } catch (error) {
                 Toast.show(error, {
-                    position: Toast.positions.CENTER
+                    position: Toast.positions.CENTER,
                 });
                 console.log("ERROR: ==>"+error);
                 formik.setFieldError("email", true);

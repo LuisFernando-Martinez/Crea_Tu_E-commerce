@@ -4,6 +4,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import { size } from "lodash";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import StatusBar from "../components/StatusBar";
+import Search from "../components/Search";
 import NotProducts from '../components/Cart/NotProducts';
 import ProductList from '../components/Cart/ProductList';
 import AddressList from '../components/Cart/AddressList';
@@ -65,9 +66,12 @@ export default function Cart() {
         <>
         <StatusBar backgroundColor={colors.bgDark} barStyle="light-content"/>
         
-        {!cart && size(cart) === 0 ? (
+        {!cart || size(cart) === 0 ? (
             //Si carrito es nulo o cart es igual a 0
+            <>
+            <Search />
             <NotProducts/>
+            </>
         ) : (
             //Si hay productos
             <KeyboardAwareScrollView extraScrollHeight={25}>

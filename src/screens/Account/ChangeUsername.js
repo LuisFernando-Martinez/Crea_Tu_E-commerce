@@ -32,13 +32,13 @@ export default function ChangeUsername() {
                 const response = await updateUserApi(auth, formData);
                 if(response.statusCode) throw "El nombre del usuario ya existe";
                 Toast.show("Username Actualizado Correctamente", {
-                    position: Toast.positions.CENTER
-                })
+                    position: Toast.positions.CENTER,
+                });
                 navigation.goBack();
             } catch (error) {
                 Toast.show(error, {
-                    position: Toast.positions.CENTER
-                })
+                    position: Toast.positions.CENTER,
+                });
                 formik.setFieldError("username", true);
                 setLoading(false);
             }

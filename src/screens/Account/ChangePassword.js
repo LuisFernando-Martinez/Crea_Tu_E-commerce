@@ -25,7 +25,7 @@ export default function ChangePassword() {
                 navigation.goBack();
             } catch (error) {
                 Toast.show(error, {
-                    position: Toast.positions.CENTER
+                    position: Toast.positions.CENTER,
                 });
                 setLoading(false);
             }

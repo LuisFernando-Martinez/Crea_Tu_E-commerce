@@ -36,7 +36,7 @@ export default function ChangeName() {
                 navigation.goBack();
             } catch (error) {
                 Toast.show("Error al actualizar los datos", {
-                    position: Toast.positions.CENTER
+                    position: Toast.positions.CENTER,
                 });
                 setLoading(false);
             }
